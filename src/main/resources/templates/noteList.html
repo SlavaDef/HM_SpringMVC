@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List</title>
+</head>
+<body>
+<table>
+    <tr>
+
+        <th><h2>TITLE</h2></th>
+        <th><h2>CONTEXT</h2></th>
+        <th></th>
+        <th></th>
+    </tr>
+    <tr th:each="note : ${noteList}">
+          <td th:text="${note.title}" />
+          <td th:text="${note.content}" />
+          <td>
+                  <button type="submit" class="link-button">DELETE</button>
+          </td>
+            <td>
+                <button type="submit" class="link-button">EDIT</button>
+
+
+                 </td>
+           </tr>
+       </table>
+       </body>
+       </html>
