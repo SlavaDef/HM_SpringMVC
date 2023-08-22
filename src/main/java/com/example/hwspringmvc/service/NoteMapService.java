@@ -16,6 +16,11 @@ public class NoteMapService {
     public void inIt() {
 
         noteMap = new HashMap<>();
+        add(new Note("title1", "content1"));
+        add(new Note("title2", "content2"));
+        add(new Note("title3", "content3"));
+        add(new Note("title4", "content4"));
+        add(new Note("title5", "content5"));
 
     }
 
