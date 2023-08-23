@@ -2,29 +2,46 @@
 <html xmlns:th="https://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <title>List</title>
 </head>
 <body>
+
+<header th:insert="~{blocks/header :: header}">
+
+</header>
 <table>
     <tr>
 
-        <th><h2>TITLE</h2></th>
-        <th><h2>CONTENT</h2></th>
+        <th><h5>TITLE</h5></th>
+        <th><h5>CONTENT</h5></th>
         <th></th>
         <th></th>
     </tr>
+
+
     <tr th:each="note : ${noteList}">
           <td th:text="${note.title}" />
           <td th:text="${note.content}" />
           <td>
-                  <button type="submit" class="link-button">DELETE</button>
+              <form action="/note/delete" method="post">
+                  <button type="submit" class="btn btn-success">DELETE</button>
+              </form>
           </td>
             <td>
-                <button type="submit" class="link-button">EDIT</button>
+                <button type="submit" class="btn btn-success">EDIT</button>
 
 
                  </td>
            </tr>
        </table>
+
+<header th:insert="~{blocks/main :: main}">
+
+</header>
+
+<div th:insert="~{blocks/footer :: footer}">
+
+</div>
        </body>
        </html>

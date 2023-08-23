@@ -48,6 +48,7 @@ public class NoteService {
 
     public void update(Note note) {
         if (note != null) {
+
             note.setTitle(scanner.next());
             note.setContent(scanner.next());
             scanner.close();
