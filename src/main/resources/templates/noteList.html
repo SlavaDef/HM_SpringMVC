@@ -19,17 +19,17 @@
         <h3 th:text="${el.title}"/>
         <p th:text="${el.content}"/>
         <a th:href="'/note/edit/' + ${el.id}" class="btn btn-warning">Edit</a> <br><br><!-- силка/кнопка на блог + елемент id для кожної запісі своя силка-->
-        <!--додаємо форму для видалення для кнопки -->
+        <!--додаємо форму для видалення, для кнопки -->
         <form th:action="'/delete/'+${el.id}" method="post">
             <button class="btn btn-warning" type="submit">Delete</button>
         </form>
-        <!--  <a th:href="'/blog/' + ${el.id}+'/delete'" class="btn btn-warning">Delete</a> силка/кнопка на видалення -->
+        <!--  <a th:href="'/note/' + ${el.id}+'/delete'" class="btn btn-warning">Delete</a> силка/кнопка на видалення -->
     </div>
 </div>
 
-<header th:insert="~{blocks/main :: main}">
+<!-- <header th:insert="~{blocks/main :: main}">
 
-</header>
+</header> -->
 
 <div th:insert="~{blocks/footer :: footer}">
 

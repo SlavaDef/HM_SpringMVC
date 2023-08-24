@@ -45,8 +45,9 @@ public class NoteService {
     }
 
     public void update(Note note) {
-        if (note != null) {
+        if (note.getId()>=0) {
             note.setTitle("title");
+
             note.setContent("content");
         } else throw new EmptyStackException();
     }

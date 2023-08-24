@@ -18,7 +18,8 @@ public class NoteController {
     private final NoteService noteService;
 
 
-    @RequestMapping(method = RequestMethod.GET, value = "/list")
+    //@RequestMapping(method = RequestMethod.GET, value = "/list")
+    @GetMapping("/list")
     public ModelAndView getNoteList() {
         return new ModelAndView("noteList",
                 "noteList", noteService.listAll());
