@@ -1,4 +1,4 @@
-package com.example.hwspringmvc.controllers;
+/* package com.example.hwspringmvc.controllers;
 
 import com.example.hwspringmvc.service.NoteMapService;
 import lombok.RequiredArgsConstructor;
@@ -31,3 +31,6 @@ public class NoteMapController {
         return "redirect:/noteMap/listMap";
     }
 }
+
+
+ */

@@ -1,7 +1,6 @@
 package com.example.hwspringmvc.service;
 
-import com.example.hwspringmvc.entity.Note;
-import jakarta.annotation.PostConstruct;
+import com.example.hwspringmvc.models.Note;
 import lombok.Data;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +12,6 @@ import java.util.Scanner;
 @Data
 @Service
 public class NoteService {
-    private final Scanner scanner = new Scanner(System.in);
 
     private List<Note> notes;
 
@@ -48,10 +46,8 @@ public class NoteService {
 
     public void update(Note note) {
         if (note != null) {
-
-            note.setTitle(scanner.next());
-            note.setContent(scanner.next());
-            scanner.close();
+            note.setTitle("title");
+            note.setContent("content");
         } else throw new EmptyStackException();
     }
 

@@ -1,6 +1,6 @@
 package com.example.hwspringmvc.service;
 
-import com.example.hwspringmvc.entity.Note;
+import com.example.hwspringmvc.models.Note;
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Service;
 

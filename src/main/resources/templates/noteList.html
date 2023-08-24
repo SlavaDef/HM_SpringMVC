@@ -10,31 +10,22 @@
 <header th:insert="~{blocks/header :: header}">
 
 </header>
-<table>
-    <tr>
-
-        <th><h5>TITLE</h5></th>
-        <th><h5>CONTENT</h5></th>
-        <th></th>
-        <th></th>
-    </tr>
 
 
-    <tr th:each="note : ${noteList}">
-          <td th:text="${note.title}" />
-          <td th:text="${note.content}" />
-          <td>
-              <form action="/note/delete" method="post">
-                  <button type="submit" class="btn btn-success">DELETE</button>
-              </form>
-          </td>
-            <td>
-                <button type="submit" class="btn btn-success">EDIT</button>
+<div class="container mt-5">
 
-
-                 </td>
-           </tr>
-       </table>
+    <!-- перебираємо кожній єлемент note з масиву -->
+    <div th:each="el : ${noteList}" class="alert alert-info mt-2"> <!-- mt-2 отступ-->
+        <h3 th:text="${el.title}"/>
+        <p th:text="${el.content}"/>
+        <a th:href="'/note/edit/' + ${el.id}" class="btn btn-warning">Edit</a> <br><br><!-- силка/кнопка на блог + елемент id для кожної запісі своя силка-->
+        <!--додаємо форму для видалення для кнопки -->
+        <form th:action="'/delete/'+${el.id}" method="post">
+            <button class="btn btn-warning" type="submit">Delete</button>
+        </form>
+        <!--  <a th:href="'/blog/' + ${el.id}+'/delete'" class="btn btn-warning">Delete</a> силка/кнопка на видалення -->
+    </div>
+</div>
 
 <header th:insert="~{blocks/main :: main}">
 

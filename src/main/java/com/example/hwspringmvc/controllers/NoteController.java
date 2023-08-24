@@ -1,12 +1,13 @@
 package com.example.hwspringmvc.controllers;
 
-import com.example.hwspringmvc.entity.Note;
+import com.example.hwspringmvc.models.Note;
 import com.example.hwspringmvc.service.NoteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
 
 
 @RequiredArgsConstructor
@@ -23,36 +24,37 @@ public class NoteController {
                 "noteList", noteService.listAll());
     }
 
-  /*  @RequestMapping(method = RequestMethod.POST, value = "/delete/{id}")
-    public String delete(@PathVariable(name = "id") Long id) {
-        noteService.deleteById(id);
-        return "redirect:/note/list";
-    } */
 
-    @PostMapping("/delete")
-    public String postCurrentTimeXFormUrlEncoded(@RequestParam long id, Model model) {
-        noteService.getById(id);
+    @PostMapping("/delete/{id}")
+    public String deleteNote(@PathVariable(value = "id") long id,
+                                                 Model model) {
         noteService.deleteById(id);
         return "redirect:/note/list";
     }
 
-  /*  @RequestMapping(method = RequestMethod.GET, value = "/edit/{id}")
-    public ModelAndView editeNote(long id) { // String
-
-    } */
-
-    // @RequestMapping(params="action=save")
-    @PostMapping(value = "/edit")
-    public ModelAndView save(@ModelAttribute("noteList") Note note) {
-        noteService.update(note);
-        return new ModelAndView("redirect:/note/list", "noteList", note.getId());
+    @GetMapping("/edit/{id}") // прописуємо динамічний параметр
+    public String blogEdit(@PathVariable(value = "id") long id, Model model) { // від статті
+        if (noteService.getById(id)==null) {
+            return "redirect:/note/list";
+        }
+        model.addAttribute("noteList", noteService.getById(id));
+        return "note-edit";
     }
 
 
-  /*  @PostMapping(value = "/edit")
-    public String editNote(Note note){
+    @PostMapping("/edit/{id}") // адреса яку ми відслідковуємо
+    public String blogPostUpdate(@PathVariable(value = "id") long id, // + таккож приймаємо параметр для обробки
+                                 @RequestParam String title,
+                                 @RequestParam String content,
+                                  Model model) {
+
+        Note note = noteService.getById(id);
+        note.setTitle(title);
+        note.setContent(content);
         noteService.update(note);
         return "redirect:/note/list";
-    }  */
+    }
+
+
 
 }
