@@ -18,8 +18,12 @@
     <div th:each="el : ${noteList}">
         <!--Форма оновлення-->
         <form method="post"> <!-- обробка запиту буде там же на якій сторінці ми є-->
-            <input type="text" th:value="${el.title}" name="title" placeholder="add your note name" class="form-control"><br>
-            <input type="text" th:value="${el.content}" name="anons" placeholder="add content" class="form-control"><br>
+            <label>
+                <input type="text" th:value="${el.title}" name="title" placeholder="add your note name" class="form-control"> <br>
+            </label><br>
+            <label>
+                <input type="text" th:value="${el.content}" name="anons" placeholder="add content" class="form-control"><br>
+            </label><br>
 
             <button type="submit" class="btn btn-success">Update</button> <!-- при натисканні данні будуть відправлятися на сервер-->
         </form>

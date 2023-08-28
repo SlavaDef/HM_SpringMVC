@@ -42,8 +42,8 @@ public class NoteController {
     }
 
 
-    @PostMapping("/edit/{id}") // адреса яку ми відслідковуємо
-    public String blogPostUpdate(@PathVariable(value = "id") long id, // + таккож приймаємо параметр для обробки
+    @PostMapping() // адреса яку ми відслідковуємо "/edit/{id}" @PathVariable(value = "id")
+    public String blogPostUpdate( long id,
                                  @RequestParam String title,
                                  @RequestParam String content,
                                   Model model) {

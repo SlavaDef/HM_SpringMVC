@@ -17,11 +17,13 @@
     <div th:each="el : ${noteList}" class="alert alert-info mt-2">
         <h3 th:text="${el.title}"/>
         <p th:text="${el.content}"/>
-        <a th:href="'/edit/'+ ${el.id}" class="btn btn-warning">Edit</a> <br><br><!-- силка/кнопка на блог + елемент id для кожної запісі своя силка-->
+        <!-- силка/кнопка на блог + елемент id для кожної запісі своя силка -->
+        <a th:href="'/note/edit/'+ ${el.id}" class="btn btn-warning">Edit</a> <br><br>
         <!--додаємо форму для видалення, для кнопки -->
         <form th:action="${el.id}" method="post" >
             <button class="btn btn-warning" type="submit">Delete</button>
         </form>
+
 
     </div>
 </div>

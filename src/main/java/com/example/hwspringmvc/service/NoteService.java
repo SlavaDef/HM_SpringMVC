@@ -38,7 +38,7 @@ public class NoteService {
 
     public void deleteById(long id) {
         Note note = notes.get((int) id);
-        if (note == null) {
+        if  (note == null) {
             throw new EmptyStackException();
         } else
             notes.remove(Math.toIntExact(id));
