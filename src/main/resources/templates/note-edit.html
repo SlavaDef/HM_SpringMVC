@@ -8,12 +8,15 @@
 <body>
 
 
+<header th:insert="~{blocks/header :: header}">
+
 </header>
 
 
 <div class="container mt-5 mb-5">
-    <h1>Редагування нотатки</h1>
+    <h1>Оновлення нотатки</h1>
     <div th:each="el : ${noteList}">
+        <!--Форма оновлення-->
         <form method="post"> <!-- обробка запиту буде там же на якій сторінці ми є-->
             <input type="text" th:value="${el.title}" name="title" placeholder="add your note name" class="form-control"><br>
             <input type="text" th:value="${el.content}" name="anons" placeholder="add content" class="form-control"><br>

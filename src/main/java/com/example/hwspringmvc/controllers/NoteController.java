@@ -18,7 +18,6 @@ public class NoteController {
     private final NoteService noteService;
 
 
-    //@RequestMapping(method = RequestMethod.GET, value = "/list")
     @GetMapping("/list")
     public ModelAndView getNoteList() {
         return new ModelAndView("noteList",
@@ -26,9 +25,9 @@ public class NoteController {
     }
 
 
-    @PostMapping("/delete/{id}")
-    public String deleteNote(@PathVariable(value = "id") long id,
-                                                 Model model) {
+    @PostMapping("/{id}")
+    public String deleteNote( @PathVariable(value = "id") long id, Model model) {
+
         noteService.deleteById(id);
         return "redirect:/note/list";
     }
