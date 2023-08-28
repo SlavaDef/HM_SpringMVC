@@ -26,14 +26,14 @@ public class NoteController {
 
 
     @PostMapping("/{id}")
-    public String deleteNote( @PathVariable(value = "id") long id, Model model) {
+    public String deleteNote( @PathVariable(value = "id") Long id, Model model) {
 
         noteService.deleteById(id);
         return "redirect:/note/list";
     }
 
     @GetMapping("/edit/{id}") // прописуємо динамічний параметр
-    public String blogEdit(@PathVariable(value = "id") long id, Model model) { // від статті
+    public String blogEdit(@PathVariable(value = "id") Long id, Model model) { // від статті
         if (noteService.getById(id)==null) {
             return "redirect:/note/list";
         }
@@ -42,8 +42,8 @@ public class NoteController {
     }
 
 
-    @PostMapping() // адреса яку ми відслідковуємо "/edit/{id}" @PathVariable(value = "id")
-    public String blogPostUpdate( long id,
+    @PostMapping("/edit/{id}") // адреса яку ми відслідковуємо
+    public String blogPostUpdate( @PathVariable(value = "id") Long id,
                                  @RequestParam String title,
                                  @RequestParam String content,
                                   Model model) {

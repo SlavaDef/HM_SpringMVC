@@ -45,10 +45,10 @@ public class NoteService {
     }
 
     public void update(Note note) {
-        if (note.getId()>=0) {
-            note.setTitle("title");
+        if (note.getId() >= 0) {
+            note.setTitle(note.getTitle());
 
-            note.setContent("content");
+            note.setContent(note.getContent());
         } else throw new EmptyStackException();
     }
 
