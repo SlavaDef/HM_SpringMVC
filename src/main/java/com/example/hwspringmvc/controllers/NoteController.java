@@ -25,8 +25,8 @@ public class NoteController {
     }
 
 
-    @PostMapping("/{id}")
-    public String deleteNote( @PathVariable(value = "id") Long id, Model model) {
+    @PostMapping("/delete") // /{id}  @PathVariable(value = "id")
+    public String deleteNote(@RequestParam Long id, Model model) {
 
         noteService.deleteById(id);
         return "redirect:/note/list";
@@ -42,8 +42,8 @@ public class NoteController {
     }
 
 
-    @PostMapping("/edit/{id}") // адреса яку ми відслідковуємо
-    public String blogPostUpdate( @PathVariable(value = "id") Long id,
+    @PostMapping("/edit") // адреса яку ми відслідковуємо
+    public String blogPostUpdate( @RequestParam Long id,
                                  @RequestParam String title,
                                  @RequestParam String content,
                                   Model model) {

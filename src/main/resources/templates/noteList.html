@@ -15,15 +15,18 @@
 <div class="container mt-5">
 
     <div th:each="el : ${noteList}" class="alert alert-info mt-2">
-        <h3 th:text="${el.title}"/>
-        <p th:text="${el.content}"/>
-        <!-- силка/кнопка на блог + елемент id для кожної запісі своя силка -->
-        <a th:href="'/note/edit/'+ ${el.id}" class="btn btn-warning">Edit</a> <br><br>
-        <!--додаємо форму для видалення, для кнопки -->
-        <form th:action="${el.id}" method="post" >
-            <button class="btn btn-warning" type="submit">Delete</button>
-        </form>
+        <h3 th:text="${el.getTitle()}"/>
+        <p th:text="${el.getContent()}"/>
 
+        <!-- силка/кнопка на блог + елемент id для кожної запісі своя силка -->
+        <a th:href="'/note/edit/'+ ${el.getId()}" class="btn btn-warning">Edit</a> <br><br>
+
+        <!--додаємо форму для видалення, для кнопки -->
+
+        <form th:action="'/note/delete'" method="post" >
+            <input type="hidden" name="id" th:value="${el.getId()}">
+            <button type="submit" class="btn btn-success">Delete</button>
+        </form>
 
     </div>
 </div>
@@ -34,3 +37,4 @@
 </div>
        </body>
        </html>
+<!-- + ${el.id}    -->
