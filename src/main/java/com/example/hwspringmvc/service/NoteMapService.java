@@ -12,18 +12,15 @@ import java.util.Map;
 public class NoteMapService {
     private Map<Long, Note> noteMap;
 
-    @PostConstruct
-    public void inIt() {
+    public NoteMapService() {
 
-        noteMap = new HashMap<>();
-        add(new Note("title1", "content1"));
-        add(new Note("title2", "content2"));
-        add(new Note("title3", "content3"));
-        add(new Note("title4", "content4"));
-        add(new Note("title5", "content5"));
-
+        this.noteMap = new HashMap<>();
+        add(new Note(1L, "Title", "Context"));
+        add(new Note(2L, "Title1", "Context1"));
+        add(new Note(3L, "Title2", "Context2"));
+        add(new Note(4L, "Title3", "Context3"));
+        add(new Note(5L, "Title4", "Context4"));
     }
-
 
     public Map<Long, Note> listAll() {
         return noteMap;

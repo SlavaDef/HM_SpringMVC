@@ -15,16 +15,16 @@
 
 <div class="container mt-5 mb-5">
     <h1>Оновлення нотатки</h1>
-    <div th:each="el : ${noteList}">
+    <div th:each="note : ${noteMapList}">
         <!--Форма оновлення-->
         <form method="post"> <!-- обробка запиту буде там же на якій сторінці ми є-->
-          <!--  <input type="hidden" name="id" th:value="${el.getId()}"> -->
+
 
             <label>
-                <input type="text" th:value="${el.getTitle()}" name="title" placeholder="add your note name" class="form-control"> <br>
+                <input type="text" th:value="${note.title}" name="title" placeholder="add your note name" class="form-control"> <br>
             </label><br>
             <label>
-                <input type="text" th:value="${el.getContent()}" name="content" placeholder="add content" class="form-control"><br>
+                <input type="text" th:value="${note.content}" name="content" placeholder="add content" class="form-control"><br>
             </label><br>
 
             <button type="submit" class="btn btn-success">Update</button> <!-- при натисканні данні будуть відправлятися на сервер-->

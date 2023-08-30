@@ -2,29 +2,38 @@
 <html xmlns:th="https://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <title>List</title>
 </head>
 <body>
-<table>
-    <tr>
 
-        <th><h2>TITLE</h2></th>
-        <th><h2>CONTENT</h2></th>
-        <th></th>
-        <th></th>
-    </tr>
-    <tr th:each="note : ${noteMapList}">
-        <td th:text="${note.value.title}" />
-        <td th:text="${note.value.content}" />
-        <td>
-            <button type="submit" class="link-button">DELETE</button>
-        </td>
-        <td>
-            <button type="submit" class="link-button">EDIT</button>
+<header th:insert="~{blocks/header :: header}">
+
+</header>
 
 
-        </td>
-    </tr>
-</table>
+<div class="container mt-5">
+
+    <div th:each="note : ${noteMapList}" class="alert alert-info mt-2">
+        <h3 th:text="${note.value.title}"/>
+        <p th:text="${note.value.content}"/>
+
+        <!-- силка/кнопка на блог + елемент id для кожної запісі своя силка -->
+        <a th:href="'/note/edit/'+ ${note.value.getId()}" class="btn btn-warning">Edit</a> <br><br>
+
+        <!--додаємо форму для видалення, для кнопки -->
+
+        <form th:action="'/note/delete'" method="post" >
+            <input type="hidden" name="id" th:value="${note.value.getId()}">
+            <button type="submit" class="btn btn-success">Delete</button>
+        </form>
+
+    </div>
+</div>
+
+
+<div th:insert="~{blocks/footer :: footer}">
+
+</div>
 </body>
 </html>

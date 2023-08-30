@@ -14,7 +14,7 @@ public class NoteService {
 
     public NoteService() {
 
-        notes = new ArrayList<>();
+        this.notes = new ArrayList<>();
 
         notes.add(new Note(0L,"title0", "content0"));
         notes.add(new Note(1L,"title1", "content1"));
@@ -60,4 +60,5 @@ public class NoteService {
         }
         return note;
     }
+
 }
