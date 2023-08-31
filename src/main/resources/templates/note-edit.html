@@ -14,23 +14,28 @@
 
 
 <div class="container mt-5 mb-5">
-    <h1>Оновлення нотатки</h1>
-    <div th:each="el : ${noteList}">
-        <!--Форма оновлення-->
-        <form method="post"> <!-- обробка запиту буде там же на якій сторінці ми є-->
-          <!--  <input type="hidden" name="id" th:value="${el.getId()}"> -->
 
-            <label>
-                <input type="text" th:value="${el.getTitle()}" name="title" placeholder="add your note name" class="form-control"> <br>
-            </label><br>
-            <label>
-                <input type="text" th:value="${el.getContent()}" name="content" placeholder="add content" class="form-control"><br>
-            </label><br>
+    <h1>Оновлення нотатки</h1>
+    <div th:each="note : ${noteList}">
+
+        <!--Форма оновлення-->
+
+        <form  th:action='@{/note/edit(id=${note.getId()-1})}' method="post"> <!-- обробка запиту буде там же на якій сторінці ми є-->
+
+
+
+                <input type="text" th:value="${note.getTitle()}" name="title" placeholder="add your note name" class="form-control"> <br>
+
+
+                <input type="text" th:value="${note.getContent()}" name="content" placeholder="add content" class="form-control"> <br>
+
 
             <button type="submit" class="btn btn-success">Update</button> <!-- при натисканні данні будуть відправлятися на сервер-->
+
         </form>
     </div>
 </div>
+
 
 <div th:insert="~{blocks/footer :: footer}">
 

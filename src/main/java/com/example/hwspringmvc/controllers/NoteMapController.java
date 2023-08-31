@@ -1,5 +1,6 @@
- /*package com.example.hwspringmvc.controllers;
+ /* package com.example.hwspringmvc.controllers;
 
+import com.example.hwspringmvc.models.Note;
 import com.example.hwspringmvc.service.NoteMapService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -35,6 +36,12 @@ public class NoteMapController {
         }
         model.addAttribute("noteMapList", noteMapService.getById(id));
         return "note-edit";
+    }
+
+    @PostMapping(value = "/edit")
+    public String noteUpdate(Note note){
+        noteMapService.update(note);
+        return "redirect:/note/list";
     }
 }
 

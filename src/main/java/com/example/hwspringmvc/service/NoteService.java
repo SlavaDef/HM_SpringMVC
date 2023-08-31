@@ -1,6 +1,7 @@
 package com.example.hwspringmvc.service;
 
 import com.example.hwspringmvc.models.Note;
+import jakarta.annotation.PostConstruct;
 import lombok.Data;
 import org.springframework.stereotype.Service;
 
@@ -15,42 +16,44 @@ public class NoteService {
     public NoteService() {
 
         this.notes = new ArrayList<>();
+        addNote(new Note("title0", "content0"));
+        addNote(new Note("title2", "content2"));
+        addNote(new Note("title3", "content3"));
+        addNote(new Note("title4", "content4"));
+        addNote(new Note("title5", "content5"));
 
-        notes.add(new Note(0L,"title0", "content0"));
-        notes.add(new Note(1L,"title1", "content1"));
-        notes.add(new Note(2L,"title2", "content2"));
-        notes.add(new Note(3L,"title3", "content3"));
-        notes.add(new Note(4L,"title4", "content4"));
-        notes.add(new Note(5L,"title5", "content5"));
-        notes.add(new Note(6L,"title6", "content6"));
 
     }
+
+    /* @PostConstruct
+    public void addingNotes(){
+        addNote(new Note("title0", "content0"));
+        addNote(new Note("title2", "content2"));
+        addNote(new Note("title3", "content3"));
+        addNote(new Note("title4", "content4"));
+        addNote(new Note("title5", "content5"));
+    }  */
 
 
     public List<Note> listAll() {
         return notes;
     }
 
-    public Note addNote(Note note) {
+    public void addNote(Note note) {
+        // note.setId((long)notes.lastIndexOf(note));
         note.setId(notes.size() + 1L);
         notes.add(note);
-        return note;
     }
 
-    public void deleteById(long id) {
-        Note note = notes.get((int) id);
-        if (note == null) {
-            throw new EmptyStackException();
-        } else
-            notes.remove(Math.toIntExact(id));
+    public void deleteById(long id){
+        notes.stream().filter(note -> note.getId().longValue() == id)
+                .findFirst().ifPresent((note -> notes.remove(note)));
     }
 
-    public void update(Note note) {
-
-        if (note.getId() >= 0) {
-            note.setTitle(note.getTitle());
-            note.setContent(note.getContent());
-        } else throw new EmptyStackException();
+    public void update(Long id, String title, String content){
+       Note note = this.getById(id);
+        note.setTitle(title);
+        note.setContent(content);
     }
 
     public Note getById(long id) {

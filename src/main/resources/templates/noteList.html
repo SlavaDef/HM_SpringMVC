@@ -18,8 +18,8 @@
         <h3 th:text="${el.getTitle()}"/>
         <p th:text="${el.getContent()}"/>
 
-        <!-- силка/кнопка на блог + елемент id для кожної запісі своя силка -->
-        <a th:href="'/note/edit/'+ ${el.getId()}" class="btn btn-warning">Edit</a> <br><br>
+        <!-- силка/кнопка на note + елемент id для кожної запісі своя силка -->
+        <a th:href="'/note/edit/'+ ${el.getId()-1}" class="btn btn-warning">Edit</a> <br><br>
 
         <!--додаємо форму для видалення, для кнопки -->
 

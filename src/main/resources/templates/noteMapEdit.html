@@ -12,25 +12,37 @@
 
 </header>
 
-
+<!--
 <div class="container mt-5 mb-5">
     <h1>Оновлення нотатки</h1>
     <div th:each="note : ${noteMapList}">
-        <!--Форма оновлення-->
-        <form method="post"> <!-- обробка запиту буде там же на якій сторінці ми є-->
+
+        <form method="post">  обробка запиту буде там же на якій сторінці ми є
 
 
             <label>
-                <input type="text" th:value="${note.title}" name="title" placeholder="add your note name" class="form-control"> <br>
+                <input type="text" th:value="${note.value.title}" name="title" placeholder="add your note name" class="form-control"> <br>
             </label><br>
             <label>
-                <input type="text" th:value="${note.content}" name="content" placeholder="add content" class="form-control"><br>
+                <input type="text" th:value="${note.value.content}" name="content" placeholder="add content" class="form-control"><br>
             </label><br>
 
-            <button type="submit" class="btn btn-success">Update</button> <!-- при натисканні данні будуть відправлятися на сервер-->
+            <button type="submit" class="btn btn-success">Update</button> при натисканні данні будуть відправлятися на сервер
         </form>
-    </div>
+           </div>
 </div>
+        -->
+
+<form method="post" action="/note/edit">
+    <span><input hidden th:name="id" th:value="${note.id}"></span>
+    <span><input type="text" th:value="${note.title}" th:name="title"></span>
+    <span><input type="text" th:value="${note.content}" th:name="content"></span>
+    <span><input type="submit" value="Save edit"></span>
+    <span><a href="/note/list">Back</a></span>
+</form>
+
+
+
 
 <div th:insert="~{blocks/footer :: footer}">
 

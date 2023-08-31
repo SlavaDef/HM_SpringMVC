@@ -1,4 +1,4 @@
-package com.example.hwspringmvc.controllers;
+ package com.example.hwspringmvc.controllers;
 
 import com.example.hwspringmvc.models.Note;
 import com.example.hwspringmvc.service.NoteService;
@@ -43,17 +43,35 @@ public class NoteController {
 
 
     @PostMapping("/edit")
-    public String noteUpdate( @RequestParam Long id,
+    public String noteUpdate( @RequestParam ("id") Long id,
                                  @RequestParam String title,
                                  @RequestParam String content,
                                   Model model) {
 
-        Note note = noteService.getById(id);
-        note.setTitle(title);
-        note.setContent(content);
-        noteService.update(note);
+        noteService.update(id,title,content);
         return "redirect:/note/list";
     }
+
+
+    @GetMapping("/add")
+    public String blogAdd(Model model) {
+        return "note-add"; // визов шаблона
+    }
+
+
+
+    @PostMapping("/add") //  отримуємо данні з форми сайту
+    public String blogPostAdd(@RequestParam String title,
+                              @RequestParam String content,
+                              Model model) {
+
+        Note note = new Note(title, content);
+        noteService.addNote(note);
+        return "redirect:/note/list";
+
+    }
+
+
 }
 
-//
+

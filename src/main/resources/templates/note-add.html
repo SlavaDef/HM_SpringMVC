@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Site Block</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+
+<header th:insert="~{blocks/header :: header}"> <!-- інсертім кусок -->
+
+</header>
+
+
+<div class="container mt-5 mb-5">
+    <h1>Anding Note</h1>
+    <form action="/note/add" method="post"> <!-- силка на урл і метод при гет все буде відображатися -->
+        <input type="text" name="title" placeholder="add your note name" class="form-control"><br>
+        <input type="text" name="content" placeholder="add text" class="form-control"><br>
+        <button type="submit" class="btn btn-success">Add new Note</button> <!-- при натисканні данні будуть відправлятися на сервер-->
+    </form>
+
+</div>
+
+<div th:insert="~{blocks/footer :: footer}"> <!-- інсертім кусок -->
+
+</div>
+
+</body>
+</html>
