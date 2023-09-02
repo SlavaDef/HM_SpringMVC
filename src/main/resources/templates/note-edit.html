@@ -20,7 +20,7 @@
 
         <!--Форма оновлення-->
 
-        <form  th:action='@{/note/edit(id=${note.getId()-1})}' method="post"> <!-- обробка запиту буде там же на якій сторінці ми є-->
+        <form  th:action='@{/note/edit(id=${note.getId()})}' method="post"> <!-- обробка запиту буде там же на якій сторінці ми є-->
 
 
 
@@ -34,6 +34,7 @@
 
         </form>
     </div>
+
 </div>
 
 

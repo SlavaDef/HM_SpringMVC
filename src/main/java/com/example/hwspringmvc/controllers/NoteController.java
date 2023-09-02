@@ -38,6 +38,7 @@ public class NoteController {
             return "redirect:/note/list";
         }
         model.addAttribute("noteList", noteService.getById(id));
+
         return "note-edit";
     }
 
